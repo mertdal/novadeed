@@ -43,10 +43,19 @@ builder.Services.AddCors(options =>
         var allowedOrigins = builder.Configuration["ALLOWED_ORIGINS"]?.Split(',') 
                              ?? new[] { "http://localhost:3000", "http://localhost:5173", "http://127.0.0.1:3000" };
 
-        policy.WithOrigins(allowedOrigins)
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials();
+        if (allowedOrigins.Contains("*"))
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        }
+        else
+        {
+            policy.WithOrigins(allowedOrigins)
+                  .AllowAnyHeader()
+                  .AllowAnyMethod()
+                  .AllowCredentials();
+        }
     });
 });
 
