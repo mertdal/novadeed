@@ -7,6 +7,12 @@ export default function LandingPage() {
   const language = useLanguageStore((s) => s.language);
   const t = useTranslation(language);
   
+  const setLanguage = useLanguageStore((s) => s.setLanguage);
+  
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'tr' : 'en');
+  };
+
   const openSignIn = useAuthStore((s) => s.openSignIn);
   const openSignUp = useAuthStore((s) => s.openSignUp);
   const showAuthModal = useAuthStore((s) => s.showAuthModal);
@@ -19,6 +25,16 @@ export default function LandingPage() {
 
   return (
     <div className="landing" id="landing-page">
+      {/* Top right language selector */}
+      <div className="landing-top-right">
+        <button 
+          className="hud-lang-btn attr-mono" 
+          onClick={toggleLanguage}
+          style={{ background: 'rgba(2, 6, 23, 0.4)', borderColor: 'rgba(56, 189, 248, 0.3)' }}
+        >
+          {language.toUpperCase()}
+        </button>
+      </div>
       {/* Animated star background */}
       <div className="landing-stars">
         {Array.from({ length: 120 }).map((_, i) => (
