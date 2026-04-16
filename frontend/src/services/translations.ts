@@ -1,6 +1,94 @@
 export type Language = 'en' | 'tr';
 
-export const translations = {
+export interface TranslationSchema {
+  // Auth & Generic
+  signin: string;
+  signup: string;
+  logout: string;
+  email_label: string;
+  password_label: string;
+  owner_name_label: string;
+  custom_name_label: string;
+  confirm_purchase: string;
+  purchasing: string;
+  success: string;
+  error: string;
+  syncing: string;
+  total: string;
+  registry_stored: string;
+  already_have_account: string;
+  dont_have_account: string;
+
+  // Navigation & HUD
+  search_stars: string;
+  search_placeholder: string;
+  dashboard: string;
+  explore_cosmos: string;
+  close_drawer: string;
+  back: string;
+  fly_to: string;
+  certificate: string;
+  navigation: string;
+  star_navigation: string;
+  orbiting: string;
+  
+  // Controls
+  pan_alignment: string;
+  telemetry_zoom: string;
+  thruster: string;
+  acquire_data: string;
+  
+  // Landing Page
+  explore_universe: string;
+  universe: string;
+  landing_subtitle: string;
+  initialize_join: string;
+  resume_session: string;
+  new_explorer: string;
+  identity_verification: string;
+  establish_link: string;
+  restore_access: string;
+  create_link: string;
+  authorize_access: string;
+  
+  // Star Details
+  class: string;
+  star_id: string;
+  distance: string;
+  magnitude: string;
+  spectral_class: string;
+  unclaimed: string;
+  already_owned: string;
+  claim_this_star: string;
+  purchase_star: string;
+  black_hole: string;
+  
+  // New Technical translations
+  nasa_real_data: string;
+  singularity: string;
+  status_classified: string;
+  status_unclaimed: string;
+  named_by: string;
+  registration_fee: string;
+
+  // Spectral Names
+  spectral_blue_supergiant: string;
+  spectral_blue_white_giant: string;
+  spectral_white_star: string;
+  spectral_yellow_white_star: string;
+  spectral_yellow_dwarf: string;
+  spectral_orange_dwarf: string;
+  spectral_red_dwarf: string;
+  
+  // Dashboard Stats
+  stars_owned: string;
+  rank: string;
+  stellar_explorer: string;
+  my_collection: string;
+  no_stars_yet: string;
+}
+
+export const translations: Record<Language, TranslationSchema> = {
   en: {
     // Auth & Generic
     signin: 'Sign In',
@@ -175,10 +263,10 @@ export const translations = {
     my_collection: 'Yıldız Koleksiyonum',
     no_stars_yet: 'Henüz kaydınızda yıldız bulunmuyor.',
   },
-} as const;
+};
 
-export type TranslationKeys = keyof typeof translations.en;
+export type TranslationKeys = keyof TranslationSchema;
 
-export const useTranslation = (lang: Language) => {
+export const useTranslation = (lang: Language): TranslationSchema => {
   return translations[lang];
 };
