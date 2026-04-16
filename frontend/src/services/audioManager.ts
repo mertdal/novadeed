@@ -2,7 +2,6 @@ class AudioManager {
   private ctx: AudioContext | null = null;
   private masterGain: GainNode | null = null;
   private isMuted: boolean = false;
-  private ambientOsc: OscillatorNode | null = null;
 
   init() {
     if (this.ctx) return;
@@ -53,7 +52,6 @@ class AudioManager {
 
     osc1.start();
     osc2.start();
-    this.ambientOsc = osc1;
   }
 
   // UI SFX - Blip

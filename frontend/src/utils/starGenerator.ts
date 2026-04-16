@@ -121,17 +121,6 @@ const REAL_STARS: [string, number, number, number, string, number][] = [
   ['Alshat', 300.274, 4.883, 3.77, 'B', 290],
 ];
 
-// Map spectral type to color — enhanced saturation for visual clarity
-// Based on real spectral colors but pushed ~30% more saturated for impact
-const SPECTRAL_COLORS: Record<string, { color: string; tempLabel: string }> = {
-  O: { color: '#6688ff', tempLabel: '30,000+ K' },     // vivid blue
-  B: { color: '#7799ff', tempLabel: '10,000–30,000 K' }, // bright blue-white
-  A: { color: '#99aaee', tempLabel: '7,500–10,000 K' },  // light blue
-  F: { color: '#eeddaa', tempLabel: '6,000–7,500 K' },   // warm white-yellow
-  G: { color: '#ffcc55', tempLabel: '5,200–6,000 K' },   // golden yellow
-  K: { color: '#ff9933', tempLabel: '3,700–5,200 K' },   // deep orange
-  M: { color: '#ff5522', tempLabel: '2,400–3,700 K' },   // red-orange
-};
 
 // Convert RA/Dec to 3D cartesian coordinates in our scene
 // Uses logarithmic scaling so all stars (8.6 ly to 2600 ly) are
@@ -170,28 +159,13 @@ function magnitudeToSize(mag: number): number {
   return Math.max(1.5, 6 - mag * 1.5);
 }
 
-// Price based on brightness and rarity
-function calculatePrice(mag: number, spectralClass: string): number {
-  const basePrices: Record<string, number> = {
-    O: 999,
-    B: 599,
-    A: 399,
-    F: 299,
-    G: 249,
-    K: 199,
-    M: 149,
-  };
-  const base = basePrices[spectralClass] || 199;
-  const brightnessMultiplier = Math.max(0.5, (3 - mag) / 3);
-  return Math.round(base * brightnessMultiplier);
-}
 
 export function generateStars(count: number): StarData[] {
   const stars: StarData[] = [];
   const limit = Math.min(count, REAL_STARS.length);
 
   for (let i = 0; i < limit; i++) {
-    const [name, ra, dec, mag, originalSpectral, distance] = REAL_STARS[i];
+    const [name, ra, dec, mag, , distance] = REAL_STARS[i];
     
     // Rastgele Astronomik Sınıf Ataması (Bilimsel kilidi kırdığımız yer)
     const BASE_CLASSES = ['O', 'B', 'A', 'F', 'G', 'K', 'M'];

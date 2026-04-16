@@ -22,12 +22,21 @@ export const translations = {
 
     // Navigation & HUD
     search_stars: 'Search Stars...',
+    search_placeholder: 'Analyze celestial coordinates...',
     dashboard: 'User Dashboard',
     explore_cosmos: 'Explore Cosmos',
     close_drawer: 'Close Drawer',
     back: 'Back',
     fly_to: 'Fly To',
     certificate: 'See Certificate',
+    navigation: 'System Navigation',
+    orbiting: 'Orbiting',
+    
+    // Controls
+    pan_alignment: 'PAN ALIGNMENT',
+    telemetry_zoom: 'TELEMETRY ZOOM',
+    thruster: 'THRUSTER',
+    acquire_data: 'ACQUIRE DATA',
     
     // Landing Page
     explore_universe: 'Explore Universe',
@@ -99,12 +108,21 @@ export const translations = {
 
     // Navigation & HUD
     search_stars: 'Yıldız Ara...',
+    search_placeholder: 'Göksel koordinatları analiz et...',
     dashboard: 'Kullanıcı Paneli',
     explore_cosmos: 'Kozmosu Keşfet',
     close_drawer: 'Paneli Kapat',
     back: 'Geri',
     fly_to: 'Git',
     certificate: 'Sertifikayı Gör',
+    navigation: 'Sistem Navigasyonu',
+    orbiting: 'Yörüngede',
+
+    // Controls
+    pan_alignment: 'PAN HİZALAMA',
+    telemetry_zoom: 'TELEMETRİ ZOOM',
+    thruster: 'İTİCİ GÜÇ',
+    acquire_data: 'VERİ EDİN',
 
     // Landing Page
     explore_universe: 'Evreni Keşfet',
