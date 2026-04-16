@@ -30,6 +30,7 @@ export const translations = {
     fly_to: 'Fly To',
     certificate: 'See Certificate',
     navigation: 'System Navigation',
+    star_navigation: 'STAR NAVIGATION',
     orbiting: 'Orbiting',
     
     // Controls
@@ -116,6 +117,7 @@ export const translations = {
     fly_to: 'Git',
     certificate: 'Sertifikayı Gör',
     navigation: 'Sistem Navigasyonu',
+    star_navigation: 'YILDIZ NAVİGASYONU',
     orbiting: 'Yörüngede',
 
     // Controls
