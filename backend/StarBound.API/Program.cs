@@ -17,7 +17,7 @@ builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<GoogleAuthService>();
 
 // ── JWT Authentication ──
-var jwtSecret = builder.Configuration["Jwt:Secret"] ?? "StarBound_SuperSecret_Key_2026_!@#$%^&*()_ChangeInProduction";
+var jwtSecret = builder.Configuration["Jwt:Secret"];
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {

@@ -18,7 +18,7 @@ public class AuthService
     public string GenerateJwtToken(User user)
     {
         var key = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(_config["Jwt:Secret"] ?? "StarBound_SuperSecret_Key_2026_!@#$%^&*()_ChangeInProduction")
+            Encoding.UTF8.GetBytes(_config["Jwt:Secret"])
         );
 
         var claims = new[]
