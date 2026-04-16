@@ -2097,6 +2097,24 @@ button {
   background: rgba(0, 0, 0, 0.2);
 }
 
+/* ============================================
+   Landing Page Utilities
+   ============================================ */
+.landing-top-right {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  z-index: 100;
+  display: flex;
+  gap: 16px;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .owned-star-actions {
   display: flex;
   gap: 12px;

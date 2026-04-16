@@ -128,8 +128,8 @@ export const translations: Record<Language, TranslationSchema> = {
     acquire_data: 'ACQUIRE DATA',
     
     // Landing Page
-    explore_universe: 'Explore Universe',
-    universe: 'Universe',
+    explore_universe: 'Beyond the',
+    universe: 'Known Universe',
     landing_subtitle: 'The premier decentralized galactic registry. Secure your legacy among the stars with quantum-encrypted ownership.',
     initialize_join: 'Initialize / Join Registry',
     resume_session: 'Resume Session',
@@ -215,8 +215,8 @@ export const translations: Record<Language, TranslationSchema> = {
     acquire_data: 'VERİ EDİN',
 
     // Landing Page
-    explore_universe: 'Evreni Keşfet',
-    universe: 'Evren',
+    explore_universe: 'Kozmosun',
+    universe: 'Derinliklerine',
     landing_subtitle: 'Lider merkeziyetsiz galaktik kayıt defteri. Kuantum şifreli mülkiyet ile yıldızlar arasındaki mirasınızı güvence altına alın.',
     initialize_join: 'Başlat / Kayda Katıl',
     resume_session: 'Oturuma Devam Et',
