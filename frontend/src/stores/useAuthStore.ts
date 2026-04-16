@@ -76,7 +76,7 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
     if (!google?.accounts?.id) return;
 
     google.accounts.id.initialize({
-      client_id: '871201368101-r4el2nj845h70iuukcv19lvbm5l9i7mm.apps.googleusercontent.com',
+      client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
       callback: async (response: any) => {
         try {
           const { googleLogin } = await import('../services/api');
