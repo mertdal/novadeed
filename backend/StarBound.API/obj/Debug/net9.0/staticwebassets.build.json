@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "w+DkWPMmZQxm7Ba6OoXUmVrg+CIYlpwdeEcioSZo9R4=",
+  "Source": "StarBound.API",
+  "BasePath": "_content/StarBound.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
