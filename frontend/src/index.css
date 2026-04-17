@@ -912,6 +912,11 @@ html, body, #root {
   border: 1px solid rgba(255, 100, 50, 0.25);
 }
 
+/* Lore section inside Drawer (Mobile Only) */
+.attr-lore-section {
+  display: none; /* Hide on desktop by default */
+}
+
 .attr-nasa-section {
   margin-bottom: 16px;
   padding: 12px;
@@ -2414,6 +2419,9 @@ button {
   .search-wrapper { width: calc(100% - 32px); left: 16px; }
   .search-container { height: 44px; }
 
-  /* Hide Activity Feed on mobile to clear view */
-  .activity-feed { display: none; }
+  /* Hide separate Activity Feed and History Panel on mobile to prevent overlap */
+  .activity-feed, .history-panel { display: none !important; }
+
+  /* Show Lore section inside StarDrawer on mobile */
+  .attr-lore-section { display: block !important; }
 }
