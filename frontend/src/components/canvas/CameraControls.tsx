@@ -17,9 +17,11 @@ export default function CameraControls() {
   const setIsMoving = useStarStore((s) => s.setIsMoving);
   const setCameraPosition = useStarStore((s) => s.setCameraPosition);
 
-  // Drag state
+  // Drag/Touch state
   const isDragging = useRef(false);
   const previousMouse = useRef({ x: 0, y: 0 });
+  const activePointers = useRef(new Map<number, { x: number, y: number }>());
+  const lastPinchDistance = useRef<number | null>(null);
 
   // Free navigation euler
   const euler = useRef(new THREE.Euler(0, 0, 0, 'YXZ'));
@@ -173,20 +175,65 @@ export default function CameraControls() {
     const canvas = gl.domElement;
 
     const onPointerDown = (e: PointerEvent) => {
-      if (e.button === 0) {
+      activePointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+      if (e.button === 0 || e.pointerType === 'touch') {
         isDragging.current = true;
         previousMouse.current = { x: e.clientX, y: e.clientY };
         canvas.style.cursor = 'grabbing';
       }
     };
 
-    const onPointerUp = () => {
-      isDragging.current = false;
-      canvas.style.cursor = isFocusMode ? 'default' : 'grab';
+    const onPointerUp = (e: PointerEvent) => {
+      activePointers.current.delete(e.pointerId);
+      if (activePointers.current.size < 2) {
+        lastPinchDistance.current = null;
+      }
+
+      if (activePointers.current.size === 0) {
+        isDragging.current = false;
+        canvas.style.cursor = isFocusMode ? 'default' : 'grab';
+      }
     };
 
     const onPointerMove = (e: PointerEvent) => {
-      if (!isDragging.current) return;
+      activePointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+      // Handle Pinch to Zoom
+      if (activePointers.current.size === 2) {
+        const points = Array.from(activePointers.current.values());
+        const dx = points[0].x - points[1].x;
+        const dy = points[0].y - points[1].y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (lastPinchDistance.current !== null) {
+          const delta = (lastPinchDistance.current - distance) * 2.0;
+
+          if (isFocusMode) {
+            let dynamicOrbitMin = ORBIT_MIN;
+            if (focusedStar) {
+              const sphereRadius = Math.max(2, focusedStar.size * 1.2);
+              dynamicOrbitMin = sphereRadius + 3.5;
+            }
+            orbitSpherical.current.radius += delta * 0.05;
+            orbitSpherical.current.radius = Math.max(dynamicOrbitMin, Math.min(ORBIT_MAX, orbitSpherical.current.radius));
+          } else if (!isMoving) {
+            const direction = new THREE.Vector3();
+            camera.getWorldDirection(direction);
+            const speed = delta > 0 ? -15 : 15;
+            moveStart.current.copy(camera.position);
+            moveEnd.current.copy(camera.position).add(direction.multiplyScalar(speed));
+            moveProgress.current = 0;
+            moveDuration.current = 0.4;
+            setIsMoving(true);
+          }
+        }
+        lastPinchDistance.current = distance;
+        return;
+      }
+
+      // Handle Single Touch Rotation
+      if (!isDragging.current || activePointers.current.size !== 1) return;
 
       const deltaX = e.clientX - previousMouse.current.x;
       const deltaY = e.clientY - previousMouse.current.y;
