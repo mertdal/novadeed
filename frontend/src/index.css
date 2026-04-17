@@ -2381,7 +2381,7 @@ button {
   .hud-logo-icon { width: 32px; height: 32px; font-size: 14px; }
   .hud-logo-title { font-size: 14px; }
   .hud-logo-subtitle { font-size: 8px; }
-  .hud-coords { display: none; } /* Hide telemetry coords on mobile */
+  .hud-coords, .hud-hint { display: none !important; } /* Hide telemetry & hints on mobile */
   .hud-controls { gap: 8px; top: 12px; right: 12px; }
 
   /* Star Drawer (Sidebar) as Bottom Sheet */
