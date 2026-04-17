@@ -2401,8 +2401,8 @@ button {
   }
   .star-drawer-content { padding: 20px; }
 
-  /* Navigation Arrows */
-  .nav-arrows { bottom: calc(45vh + 20px); } /* Push up when drawer is open? Or just hide? */
+  /* Navigation Arrows - Moved to bottom for ergonomics */
+  .nav-arrows { bottom: 40px; } 
   .nav-arrow { width: 42px; height: 42px; }
 
   /* Modals */
