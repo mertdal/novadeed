@@ -2422,27 +2422,29 @@ button {
   }
   .attr-main-info {
     cursor: pointer;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
+  }
+  .attr-name-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
   }
   .attr-star-name {
     font-size: 24px !important;
-    margin-bottom: 4px !important;
+    margin-bottom: 0 !important;
     display: flex;
     align-items: center;
     gap: 8px;
   }
-  .expand-icon {
-    font-size: 14px;
-    color: var(--color-accent);
-    opacity: 0.6;
-  }
   .attr-star-class { font-size: 10px !important; margin-bottom: 0 !important; }
+  .expand-icon { font-size: 12px; color: var(--color-accent); opacity: 0.6; }
 
   .attr-mini-purchase {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-top: 4px;
+    margin-top: 8px;
   }
   .attr-mini-price {
     font-family: var(--font-mono);
@@ -2477,27 +2479,35 @@ button {
     font-weight: 700;
   }
 
-  /* Hide detailed content when not expanded to prevent layout jumps */
-  .attr-panel--mini .attr-expanded-content {
-    display: none;
+  .attr-back-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
   }
 
+  /* Expanded mode visibility transitions */
+  .attr-panel--mini .attr-expanded-content { display: none; }
   .attr-panel--expanded .attr-expanded-content {
     display: block;
     padding: 0 20px 40px;
     animation: fadeIn 0.4s ease;
   }
-  
   .attr-panel--expanded .attr-buy-btn-mini,
-  .attr-panel--expanded .attr-mini-price {
-    display: none; /* Hide mini elements when large ones are visible */
+  .attr-panel--expanded .attr-mini-price,
+  .attr-panel--expanded .attr-tap-hint {
+    display: none;
   }
 
-  .attr-back-text { display: none; } /* Hide 'Close' text on mobile */
-  .attr-back { 
-    margin-bottom: 8px !important; 
-    padding: 6px 10px !important;
-  }
+  .attr-back-text, .attr-back { display: none !important; }
 
   /* Navigation Arrows */
   .nav-arrows { bottom: 160px; transition: bottom 0.4s; } /* Sit above mini drawer */

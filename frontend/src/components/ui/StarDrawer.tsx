@@ -58,15 +58,16 @@ export default function StarDrawer() {
       <div className="attr-panel-inner">
         {/* Header / Mini View Area */}
         <div className="attr-header-mini">
-          <button className="attr-back" onClick={exitFocus}>
-          <span>←</span> <span className="attr-back-text">{t.close_drawer}</span>
-        </button>
-
           <div className="attr-main-info" onClick={handleHeaderClick}>
-            <h3 className="attr-star-name">
-              {focusedStar.name}
-              <span className="expand-icon">{isExpanded ? '▼' : '▲'}</span>
-            </h3>
+            <div className="attr-name-row">
+              <h3 className="attr-star-name">
+                {focusedStar.name}
+                <span className="expand-icon">{isExpanded ? '▼' : '▲'}</span>
+              </h3>
+              <button className="attr-back-circle" onClick={(e) => { e.stopPropagation(); exitFocus(); }}>
+                ✕
+              </button>
+            </div>
             <p className="attr-star-class">
               {isBlackHole
                 ? t.black_hole
