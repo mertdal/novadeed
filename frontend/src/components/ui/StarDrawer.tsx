@@ -59,8 +59,8 @@ export default function StarDrawer() {
         {/* Header / Mini View Area */}
         <div className="attr-header-mini">
           <button className="attr-back" onClick={exitFocus}>
-            <span>←</span> {t.close_drawer}
-          </button>
+          <span>←</span> <span className="attr-back-text">{t.close_drawer}</span>
+        </button>
 
           <div className="attr-main-info" onClick={handleHeaderClick}>
             <h3 className="attr-star-name">
@@ -72,13 +72,17 @@ export default function StarDrawer() {
                 ? t.black_hole
                 : `${spectralName} · ${t.class} ${focusedStar.spectralClass}`}
             </p>
+            {!isExpanded && (
+              <p className="attr-tap-hint">{language === 'tr' ? 'Detaylar için dokunun' : 'Tap for details'}</p>
+            )}
           </div>
 
           {!isBlackHole && !isExpanded && (
             <div className="attr-mini-purchase">
+              <span className="attr-mini-price">${focusedStar.price}</span>
               {!focusedStar.isOwned ? (
                 <button className="attr-buy-btn-mini" onClick={openPurchaseModal}>
-                  {t.claim_this_star.toUpperCase()}
+                  {t.confirm_purchase.toUpperCase()}
                 </button>
               ) : (
                 <div className="attr-owned-badge-mini">{t.already_owned.toUpperCase()}</div>

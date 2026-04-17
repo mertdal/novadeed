@@ -2440,17 +2440,34 @@ button {
 
   .attr-mini-purchase {
     display: flex;
+    align-items: center;
+    gap: 12px;
     margin-top: 4px;
+  }
+  .attr-mini-price {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: white;
+    font-weight: 700;
+  }
+  .attr-tap-hint {
+    font-size: 9px;
+    color: var(--color-accent);
+    opacity: 0.8;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
   .attr-buy-btn-mini {
     background: var(--color-accent);
     color: white;
     border: none;
-    padding: 8px 16px;
+    padding: 8px 14px;
     font-size: 10px;
     font-family: var(--font-mono);
     font-weight: 700;
     letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
   }
   .attr-owned-badge-mini {
     font-size: 10px;
@@ -2471,11 +2488,16 @@ button {
     animation: fadeIn 0.4s ease;
   }
   
-  .attr-panel--expanded .attr-buy-btn-mini {
-    display: none; /* Hide mini btn when large one is visible */
+  .attr-panel--expanded .attr-buy-btn-mini,
+  .attr-panel--expanded .attr-mini-price {
+    display: none; /* Hide mini elements when large ones are visible */
   }
 
-  .attr-back { margin-bottom: 12px !important; }
+  .attr-back-text { display: none; } /* Hide 'Close' text on mobile */
+  .attr-back { 
+    margin-bottom: 8px !important; 
+    padding: 6px 10px !important;
+  }
 
   /* Navigation Arrows */
   .nav-arrows { bottom: 160px; transition: bottom 0.4s; } /* Sit above mini drawer */
