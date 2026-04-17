@@ -2385,25 +2385,95 @@ button {
   .hud-controls { gap: 8px; top: 12px; right: 12px; }
 
   /* Star Drawer (Sidebar) as Bottom Sheet */
-  .star-drawer {
+  .attr-panel {
     width: 100% !important;
-    height: 45vh !important;
+    height: 140px !important; /* Mini view height */
     top: auto !important;
     bottom: 0 !important;
     left: 0 !important;
     border-right: none !important;
-    border-top: 1px solid var(--color-accent) !important;
+    border-top: 2px solid var(--color-accent) !important;
     transform: translateY(100%);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    background: rgba(5, 8, 16, 0.95) !important;
+    backdrop-filter: blur(20px) !important;
+    overflow: hidden !important; /* Prevent scroll in mini view */
   }
-  .star-drawer--open {
+  .attr-panel--open {
     transform: translateY(0);
   }
-  .star-drawer-content { padding: 20px; }
+  .attr-panel--expanded {
+    height: 75vh !important;
+    overflow-y: auto !important; /* Allow scroll when expanded */
+  }
 
-  /* Navigation Arrows - Moved to bottom for ergonomics */
-  .nav-arrows { bottom: 40px; } 
-  .nav-arrow { width: 42px; height: 42px; }
+  /* Header Mini View */
+  .attr-header-mini {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 20px;
+    position: relative;
+  }
+  .attr-main-info {
+    cursor: pointer;
+    margin-bottom: 12px;
+  }
+  .attr-star-name {
+    font-size: 24px !important;
+    margin-bottom: 4px !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .expand-icon {
+    font-size: 14px;
+    color: var(--color-accent);
+    opacity: 0.6;
+  }
+  .attr-star-class { font-size: 10px !important; margin-bottom: 0 !important; }
+
+  .attr-mini-purchase {
+    display: flex;
+    margin-top: 4px;
+  }
+  .attr-buy-btn-mini {
+    background: var(--color-accent);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 10px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .attr-owned-badge-mini {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: var(--color-accent);
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+
+  /* Hide detailed content when not expanded to prevent layout jumps */
+  .attr-panel--mini .attr-expanded-content {
+    display: none;
+  }
+
+  .attr-panel--expanded .attr-expanded-content {
+    display: block;
+    padding: 0 20px 40px;
+    animation: fadeIn 0.4s ease;
+  }
+  
+  .attr-panel--expanded .attr-buy-btn-mini {
+    display: none; /* Hide mini btn when large one is visible */
+  }
+
+  .attr-back { margin-bottom: 12px !important; }
+
+  /* Navigation Arrows */
+  .nav-arrows { bottom: 160px; transition: bottom 0.4s; } /* Sit above mini drawer */
+  .attr-panel--expanded ~ .nav-arrows { bottom: 80vh; opacity: 0; pointer-events: none; }
 
   /* Modals */
   .auth-modal, .purchase-modal, .certificate-content {
