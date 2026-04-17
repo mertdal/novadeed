@@ -2366,6 +2366,12 @@ button {
     --sidebar-width: 100%;
   }
 
+  /* Fix canvas collapsing in focus mode on mobile */
+  .app--focus .canvas-wrapper {
+    left: 0 !important;
+    right: 0 !important;
+  }
+
   /* Landing Page Mobile */
   .landing-title { font-size: 32px; padding: 0 20px; }
   .landing-subtitle { font-size: 14px; padding: 0 20px; line-height: 1.6; }
