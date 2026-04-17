@@ -32,7 +32,7 @@ export default function LandingPage() {
           onClick={toggleLanguage}
           style={{ background: 'rgba(2, 6, 23, 0.4)', borderColor: 'rgba(56, 189, 248, 0.3)' }}
         >
-          {language.toUpperCase()}
+          {language === 'tr' ? '🇹🇷 TR' : '🇺🇸 EN'}
         </button>
       </div>
       {/* Animated star background */}

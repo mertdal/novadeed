@@ -68,7 +68,7 @@ export default function HUD() {
           onClick={toggleLanguage}
           title={language === 'en' ? 'Switch to Turkish' : 'İngilizce\'ye Geç'}
         >
-          {language.toUpperCase()}
+          {language === 'tr' ? '🇹🇷 TR' : '🇺🇸 EN'}
         </button>
 
         {!isFocusMode && (
